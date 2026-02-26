@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 73cc7fda7b9094f4995b79b2d8467c90
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _sprite: {instanceID: 0}
+  - _fruitPrefab: {instanceID: 0}
+  - _nextFruit: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
