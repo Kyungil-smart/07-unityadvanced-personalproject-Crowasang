@@ -59,7 +59,7 @@ public class FruitSpawn : MonoBehaviour
         
         float targetX = Mathf.Clamp(worldPos.x, -2.8f, 2.8f);
     
-        transform.position = new Vector3(targetX, 3.5f, 0);
+        transform.position = new Vector3(targetX, transform.position.y, 0);
     }
     
     private void SpawnFruit()
