@@ -7,26 +7,26 @@ public class FruitSpawn : MonoBehaviour
 {
     [SerializeField] private FruitData[] spawnableFruits;
     private FruitData _currentFruit;
-    public PlayerInput _playerInput;
+    public PlayerFruit _playerInput;
     public bool isReady = true;
     private Vector2 _mouseInputPos;
 
     private void Awake()
     {
-        _playerInput = new PlayerInput();
+        _playerInput = new PlayerFruit();
         GetNextFruit();
     }
 
     private void OnEnable()
     {
-        _playerInput.Player.Enable();
+        _playerInput.Enable();
         _playerInput.Player.Drop.started += OnDrop;
     }
 
     private void OnDisable()
     {
         _playerInput.Player.Drop.started -= OnDrop;
-        _playerInput.Player.Disable();
+        _playerInput.Disable();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -36,9 +36,8 @@ public class FruitSpawn : MonoBehaviour
 
     public void OnDrop(InputAction.CallbackContext ctx)
     {
-        if (isReady)
+        if (ctx.started && isReady)
         {
-            Debug.Log("클릭");
             SpawnFruit();
         }
     }
@@ -46,6 +45,7 @@ public class FruitSpawn : MonoBehaviour
     private void SpawnFruit()
     {
         PoolManager.Instance.Get(_currentFruit, transform.position);
+        GetNextFruit();
     }
     
     private void GetNextFruit()
