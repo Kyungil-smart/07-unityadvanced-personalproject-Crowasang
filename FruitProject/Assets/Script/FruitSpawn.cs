@@ -1,11 +1,13 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class FruitSpawn : MonoBehaviour
 {
-    [SerializeField] private FruitData[] spawnableFruits;
+    [SerializeField] private FruitData[] spawnFruits;
+    [SerializeField] private SpriteRenderer previewRenderer;
     private FruitData _currentFruit;
     public PlayerFruit _playerInput;
     public bool isReady = true;
@@ -17,15 +19,22 @@ public class FruitSpawn : MonoBehaviour
         GetNextFruit();
     }
 
+    private void Update()
+    {
+        FollowFruit();
+    }
+
     private void OnEnable()
     {
         _playerInput.Enable();
+        _playerInput.Player.Move.performed += OnMove;
         _playerInput.Player.Drop.started += OnDrop;
     }
 
     private void OnDisable()
     {
         _playerInput.Player.Drop.started -= OnDrop;
+        _playerInput.Player.Move.performed -= OnMove;
         _playerInput.Disable();
     }
 
@@ -42,6 +51,17 @@ public class FruitSpawn : MonoBehaviour
         }
     }
 
+    private void FollowFruit()
+    {
+        Vector3 mousePosWithZ = new Vector3(_mouseInputPos.x, _mouseInputPos.y, 10f);
+        
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePosWithZ);
+        
+        float targetX = Mathf.Clamp(worldPos.x, -2.8f, 2.8f);
+    
+        transform.position = new Vector3(targetX, 3.5f, 0);
+    }
+    
     private void SpawnFruit()
     {
         PoolManager.Instance.Get(_currentFruit, transform.position);
@@ -50,6 +70,7 @@ public class FruitSpawn : MonoBehaviour
     
     private void GetNextFruit()
     {
-        _currentFruit = spawnableFruits[Random.Range(0, spawnableFruits.Length)];
+        _currentFruit = spawnFruits[Random.Range(0, spawnFruits.Length)];
+        previewRenderer.sprite = _currentFruit._sprite;
     }
 }
