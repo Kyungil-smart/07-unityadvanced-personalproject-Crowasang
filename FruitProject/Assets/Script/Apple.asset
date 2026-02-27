@@ -16,5 +16,5 @@ MonoBehaviour:
   _name: "\uC0AC\uACFC"
   _sprite: {fileID: 21300000, guid: 7660b40d1800e9d4cbc840c07030de47, type: 3}
   _fruitPrefab: {fileID: 2065733323394677599, guid: 96edc8ebee44f624e8bd0d0fcf11e901, type: 3}
-  _score: 16
-  _nextFruit: {fileID: 0}
+  _score: 32
+  _nextFruit: {fileID: 11400000, guid: 0f48d93d290690f4fb3e42d454f2a833, type: 2}

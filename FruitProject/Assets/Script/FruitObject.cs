@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class FruitObject : MonoBehaviour, IPoolable
 {
-    public FruitData data;
+    private FruitData data;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D rb;
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
 

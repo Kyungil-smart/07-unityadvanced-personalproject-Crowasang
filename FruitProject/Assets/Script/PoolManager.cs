@@ -16,15 +16,13 @@ public class PoolManager : MonoBehaviour
 
     public GameObject Get(FruitData data, Vector2 position)
     {
-        // 해당 prefab이 큐에 있나?
         if (!_pools.ContainsKey(data))
         {
             _pools.Add(data, new Queue<GameObject>());
         }
 
         GameObject obj;
-
-        // 큐에 오브젝트가 있으면 계속 꺼내기
+        
         if (_pools[data].Count > 0)
         {
             obj = _pools[data].Dequeue();
@@ -41,7 +39,6 @@ public class PoolManager : MonoBehaviour
 
     }
     
-    // 데이터 집어 넣기 OFF
     public void Release(FruitData data, GameObject obj)
     {
         if (!_pools.ContainsKey(data))

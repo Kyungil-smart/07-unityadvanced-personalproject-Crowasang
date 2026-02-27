@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73cc7fda7b9094f4995b79b2d8467c90, type: 3}
-  m_Name: Cherry
+  m_Name: Watermelon
   m_EditorClassIdentifier: Assembly-CSharp::FruitData
-  _id: 1
-  _name: "\uCCB4\uB9AC"
-  _sprite: {fileID: 21300000, guid: 4a749b630434e314e8752f3083683ebb, type: 3}
-  _fruitPrefab: {fileID: 8335655880235124583, guid: a3c9ffff04edc97469cb567ae32268f6, type: 3}
-  _score: 1
-  _nextFruit: {fileID: 11400000, guid: d2387583cfd02fb4ba440fce11546a60, type: 2}
+  _id: 9
+  _name: "\uC218\uBC15"
+  _sprite: {fileID: 21300000, guid: f262d89669c2e1e468c5609c48e1ae20, type: 3}
+  _fruitPrefab: {fileID: 2556009809711118565, guid: 04cf3700f04a22c4da5e489c015d881b, type: 3}
+  _score: 512
+  _nextFruit: {fileID: 0}

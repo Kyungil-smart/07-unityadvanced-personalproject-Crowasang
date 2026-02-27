@@ -9,6 +9,7 @@ public class FruitSpawn : MonoBehaviour
 {
     [SerializeField] private FruitData[] spawnFruits;
     [SerializeField] private SpriteRenderer previewRenderer;
+    private FruitObject _fruitObject;
     private FruitData _currentFruit;
     public PlayerFruit _playerInput;
     public bool isReady = true;
@@ -57,7 +58,7 @@ public class FruitSpawn : MonoBehaviour
     {
         Vector3 worldPosX = Camera.main.ScreenToWorldPoint(_mouseInputPos);
         
-        float targetX = Mathf.Clamp(worldPosX.x, -2.8f, 2.8f);
+        float targetX = Mathf.Clamp(worldPosX.x, -3.7f, 3.7f);
     
         transform.position = new Vector3(targetX, transform.position.y, 0);
     }
