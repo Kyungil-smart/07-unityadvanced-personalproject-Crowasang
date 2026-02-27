@@ -6,7 +6,8 @@ public class FruitData : ScriptableObject
     [Header("기본 정보")] 
     public int _id;
     public string _name;
-
+    public float _fruitScale;
+    
     [Header("이미지")] 
     public Sprite _sprite;
     public GameObject _fruitPrefab;

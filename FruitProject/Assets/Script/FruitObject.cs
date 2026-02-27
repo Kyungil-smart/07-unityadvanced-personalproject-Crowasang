@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class FruitObject : MonoBehaviour, IPoolable
 {
-    private FruitData data;
+    [HideInInspector] public FruitData data;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D rb;
+    private bool isMerging = false;
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -22,16 +23,41 @@ public class FruitObject : MonoBehaviour, IPoolable
     {
         rb.linearVelocity = Vector2.zero;
         rb.simulated = true;
+        rb.angularVelocity = 0f;
+        rb.rotation = 0f;
+        transform.rotation = Quaternion.identity;
     }
 
     public void OnDespawn()
     {
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
+        isMerging = false;
+        rb.rotation = 0f;
+        transform.rotation = Quaternion.identity;
     }
 
-    public void Merge()
+    public void Merge(FruitObject other)
     {
-        
+        Vector3 mergePos = (transform.position + other.transform.position) / 2f;
+        PoolManager.Instance.Release(data, gameObject);
+        PoolManager.Instance.Release(other.data, other.gameObject);
+        GameManager.Instance.SpawnNextLevel(data, mergePos);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out FruitObject other))
+        {
+            if (data._id == other.data._id)
+            {
+                if (GetInstanceID() > other.GetInstanceID())
+                {
+                    isMerging = true;
+                
+                    Merge(other); 
+                }
+            }
+        }
     }
 }

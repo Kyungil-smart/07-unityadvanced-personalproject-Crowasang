@@ -78,5 +78,6 @@ public class FruitSpawn : MonoBehaviour
     {
         _currentFruit = spawnFruits[Random.Range(0, spawnFruits.Length)];
         previewRenderer.sprite = _currentFruit._sprite;
+        previewRenderer.transform.localScale = Vector3.one * _currentFruit._fruitScale;
     }
 }
