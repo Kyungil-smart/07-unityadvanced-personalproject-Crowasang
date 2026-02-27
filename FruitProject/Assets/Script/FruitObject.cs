@@ -49,14 +49,11 @@ public class FruitObject : MonoBehaviour, IPoolable
     {
         if (collision.gameObject.TryGetComponent(out FruitObject other))
         {
-            if (data._id == other.data._id)
+            if ((data._id == other.data._id) && (GetInstanceID() > other.GetInstanceID()))
             {
-                if (GetInstanceID() > other.GetInstanceID())
-                {
-                    isMerging = true;
+                isMerging = true;
                 
-                    Merge(other); 
-                }
+                Merge(other); 
             }
         }
     }
