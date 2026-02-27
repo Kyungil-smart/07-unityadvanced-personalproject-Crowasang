@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,7 @@ public class FruitSpawn : MonoBehaviour
     private void Awake()
     {
         _playerInput = new PlayerFruit();
+        _mouseInputPos = new Vector2();
         GetNextFruit();
     }
 
@@ -47,24 +49,27 @@ public class FruitSpawn : MonoBehaviour
     {
         if (ctx.started && isReady)
         {
-            SpawnFruit();
+            StartCoroutine(SpawnFruit());
         }
     }
 
     private void FollowFruit()
     {
-        Vector3 mousePosWithZ = new Vector3(_mouseInputPos.x, _mouseInputPos.y, 10f);
+        Vector3 worldPosX = Camera.main.ScreenToWorldPoint(_mouseInputPos);
         
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePosWithZ);
-        
-        float targetX = Mathf.Clamp(worldPos.x, -2.8f, 2.8f);
+        float targetX = Mathf.Clamp(worldPosX.x, -2.8f, 2.8f);
     
         transform.position = new Vector3(targetX, transform.position.y, 0);
     }
     
-    private void SpawnFruit()
+    private IEnumerator SpawnFruit()
     {
+        isReady = false;
         PoolManager.Instance.Get(_currentFruit, transform.position);
+        previewRenderer.enabled = false;
+        yield return new WaitForSeconds(1f);
+        previewRenderer.enabled = true;
+        isReady = true;
         GetNextFruit();
     }
     
