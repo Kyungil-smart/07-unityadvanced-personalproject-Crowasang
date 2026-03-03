@@ -6,7 +6,6 @@ public class FruitObject : MonoBehaviour, IPoolable
     [HideInInspector] public FruitData data;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D rb;
-    private bool isMerging = false;
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -32,7 +31,6 @@ public class FruitObject : MonoBehaviour, IPoolable
     {
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
-        isMerging = false;
         rb.rotation = 0f;
         transform.rotation = Quaternion.identity;
     }
@@ -51,8 +49,6 @@ public class FruitObject : MonoBehaviour, IPoolable
         {
             if ((data._id == other.data._id) && (GetInstanceID() > other.GetInstanceID()))
             {
-                isMerging = true;
-                
                 Merge(other); 
             }
         }
