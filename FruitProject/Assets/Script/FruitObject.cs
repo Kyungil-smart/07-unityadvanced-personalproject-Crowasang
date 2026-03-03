@@ -49,6 +49,7 @@ public class FruitObject : MonoBehaviour, IPoolable
         {
             if ((data._id == other.data._id) && (GetInstanceID() > other.GetInstanceID()))
             {
+                Score.Instance.ScoreUpdate(data._score);
                 Merge(other); 
             }
         }
