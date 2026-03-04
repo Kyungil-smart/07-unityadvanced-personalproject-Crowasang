@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     private FruitObject _nextFruit;
     [SerializeField] private FruitData[] allFruitData;
     [SerializeField] private GameObject _gameoverPanel;
-    [SerializeField] private float _gameoverTime = 0f;
     
     private void Awake() => Instance = this;
 

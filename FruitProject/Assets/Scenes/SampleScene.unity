@@ -511,7 +511,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e4f35f6cf3cda54ab3a44bca5f30471, type: 2}
   - {fileID: 11400000, guid: 7eb997f3671bbf54baf092862af115f4, type: 2}
   previewRenderer: {fileID: 1102161594}
-  audioSource: {fileID: 1971467397}
   isReady: 1
 --- !u!114 &166407734
 MonoBehaviour:
@@ -2314,7 +2313,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a91854acdb729c64b84d91a76befeb3a, type: 2}
   - {fileID: 11400000, guid: 7086e80fb41e990438b771d4ba6dde58, type: 2}
   _gameoverPanel: {fileID: 2124397504}
-  _gameoverTime: 0
 --- !u!1 &1231406381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +3737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1971467396}
   - component: {fileID: 1971467397}
+  - component: {fileID: 1971467398}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3858,6 +3857,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1971467398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971467395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724914e8f26e21345949d99706d8de3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  audioSource: {fileID: 1971467397}
 --- !u!1 &2046276820
 GameObject:
   m_ObjectHideFlags: 0

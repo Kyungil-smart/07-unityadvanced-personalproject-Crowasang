@@ -52,13 +52,13 @@ public class FruitSpawn : MonoBehaviour
 
     public void OnDrop(InputAction.CallbackContext ctx)
     {
-        AudioClip clip = Resources.Load<AudioClip>("Sounds/Pop");
-        AudioManager.Instance.PlaySound(clip);
         if (ctx.started && isReady)
         {
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(_mouseInputPos);
             if (worldPos.x < 4f && worldPos.x > -4f)
             {
+                AudioClip clip = Resources.Load<AudioClip>("Audio/Drop");
+                AudioManager.Instance.PlaySound(clip);
                 StartCoroutine(SpawnFruit());
             }
         }
