@@ -7,8 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private TextMeshProUGUI _lastScoreText;
+    private FruitObject _nextFruit;
     [SerializeField] private FruitData[] allFruitData;
     [SerializeField] private GameObject _gameoverPanel;
+    [SerializeField] private float _gameoverTime = 0f;
     
     private void Awake() => Instance = this;
 
@@ -17,18 +19,19 @@ public class GameManager : MonoBehaviour
         _lastScoreText = _gameoverPanel.GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    public void SpawnNextLevel(FruitData currentData, Vector3 spawnPos)
+    public void SpawnNextFruit(FruitData currentData, Vector3 spawnPos)
     {
         if (currentData._nextFruit != null)
         {
             PoolManager.Instance.Get(currentData._nextFruit, spawnPos);
         }
+        
     }
 
     public void GameOver()
     {
         Time.timeScale = 0f;
-        _lastScoreText.text = $"내 점수 : {Score.Instance.LastScore().ToString()}";
+        _lastScoreText.text = $"My Score : {Score.Instance.LastScore()}";
         _gameoverPanel.SetActive(true);
     }
 }

@@ -4,14 +4,16 @@ using UnityEngine;
 public class FruitObject : MonoBehaviour, IPoolable
 {
     [HideInInspector] public FruitData data;
-    [SerializeField] private bool isFruit;
+    public bool _isFruit;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D rb;
-    private float _gameoverTime = 0f;
+    [SerializeField] private float _gameoverTime = 0f;
+    [SerializeField] private bool _isLand = true;
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        _isFruit = true;
     }
 
     public void Init(FruitData newData)
@@ -27,7 +29,8 @@ public class FruitObject : MonoBehaviour, IPoolable
         rb.angularVelocity = 0f;
         rb.rotation = 0f;
         transform.rotation = Quaternion.identity;
-        isFruit = false;
+        _isFruit = true;
+        _isLand = true;
     }
 
     public void OnDespawn()
@@ -36,6 +39,9 @@ public class FruitObject : MonoBehaviour, IPoolable
         rb.angularVelocity = 0f;
         rb.rotation = 0f;
         transform.rotation = Quaternion.identity;
+        _gameoverTime = 0f;
+        _isFruit = true;
+        _isLand = true;
     }
 
     public void Merge(FruitObject other)
@@ -43,12 +49,12 @@ public class FruitObject : MonoBehaviour, IPoolable
         Vector3 mergePos = (transform.position + other.transform.position) / 2f;
         PoolManager.Instance.Release(data, gameObject);
         PoolManager.Instance.Release(other.data, other.gameObject);
-        GameManager.Instance.SpawnNextLevel(data, mergePos);
+        GameManager.Instance.SpawnNextFruit(data, mergePos);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (!isFruit)
+        if (!_isFruit && !_isLand)
         {
             _gameoverTime += Time.deltaTime;
             if (_gameoverTime >= 3f) GameManager.Instance.GameOver();
@@ -61,6 +67,10 @@ public class FruitObject : MonoBehaviour, IPoolable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Fruit") || collision.gameObject.CompareTag("Floor"))
+        {
+            _isLand = false;
+        }
         if (collision.gameObject.TryGetComponent(out FruitObject other))
         {
             if ((data._id == other.data._id) && (GetInstanceID() > other.GetInstanceID()))
@@ -73,11 +83,11 @@ public class FruitObject : MonoBehaviour, IPoolable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        isFruit = true;
+        _isFruit = false;
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        isFruit = false;
+        _isFruit = true;
     }
 }
