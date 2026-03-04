@@ -19,7 +19,11 @@ public class FruitSpawn : MonoBehaviour
     {
         _playerInput = new PlayerFruit();
         _mouseInputPos = new Vector2();
-        GetNextFruit();
+    }
+
+    private void Start()
+    {
+        GetCurrentFruit();
     }
 
     private void Update()
@@ -48,9 +52,15 @@ public class FruitSpawn : MonoBehaviour
 
     public void OnDrop(InputAction.CallbackContext ctx)
     {
+        AudioClip clip = Resources.Load<AudioClip>("Sounds/Pop");
+        AudioManager.Instance.PlaySound(clip);
         if (ctx.started && isReady)
         {
-            StartCoroutine(SpawnFruit());
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(_mouseInputPos);
+            if (worldPos.x < 4f && worldPos.x > -4f)
+            {
+                StartCoroutine(SpawnFruit());
+            }
         }
     }
 
@@ -71,13 +81,14 @@ public class FruitSpawn : MonoBehaviour
         yield return new WaitForSeconds(1f);
         previewRenderer.enabled = true;
         isReady = true;
-        GetNextFruit();
+        GetCurrentFruit();
     }
     
-    private void GetNextFruit()
+    private void GetCurrentFruit()
     {
-        _currentFruit = spawnFruits[Random.Range(0, spawnFruits.Length)];
+        _currentFruit = NextFruit.Instance.GetNextFruit();
         previewRenderer.sprite = _currentFruit._sprite;
         previewRenderer.transform.localScale = Vector3.one * _currentFruit._fruitScale;
     }
+    
 }

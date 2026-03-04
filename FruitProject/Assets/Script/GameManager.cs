@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
         {
             PoolManager.Instance.Get(currentData._nextFruit, spawnPos);
         }
-        
     }
 
     public void GameOver()
