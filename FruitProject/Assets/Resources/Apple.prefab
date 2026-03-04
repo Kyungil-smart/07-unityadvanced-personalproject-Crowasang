@@ -111,6 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FruitObject
   data: {fileID: 0}
+  _isFruit: 0
+  _gameoverTime: 0
+  _isLand: 1
 --- !u!1 &5212805721798319873
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +193,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7660b40d1800e9d4cbc840c07030de47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
