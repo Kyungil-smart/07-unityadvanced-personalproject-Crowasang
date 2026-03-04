@@ -76,7 +76,7 @@ public class FruitObject : MonoBehaviour, IPoolable
             if ((data._id == other.data._id) && (GetInstanceID() > other.GetInstanceID()))
             {
                 AudioClip clip = Resources.Load<AudioClip>("Audio/Merge");
-                AudioManager.Instance.PlaySound(clip);
+                AudioManager.Instance.PlaySound(clip, 0.3f);
                 Score.Instance.ScoreUpdate(data._score);
                 Merge(other); 
             }
