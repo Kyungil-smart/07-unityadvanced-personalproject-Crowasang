@@ -19,6 +19,11 @@ public class Score : MonoBehaviour
         UpdateUI();
     }
 
+    public int LastScore()
+    {
+        return _score;
+    }
+    
     public void ScoreUpdate(int score)
     {
         _score += score;
