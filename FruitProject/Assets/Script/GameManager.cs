@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -31,5 +32,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         _lastScoreText.text = $"My Score : {Score.Instance.LastScore()}";
         _gameoverPanel.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
     }
 }

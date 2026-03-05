@@ -58,7 +58,7 @@ public class FruitSpawn : MonoBehaviour
             if (worldPos.x < 4f && worldPos.x > -4f)
             {
                 AudioClip clip = Resources.Load<AudioClip>("Audio/Drop");
-                AudioManager.Instance.PlaySound(clip, 0.5f);
+                AudioManager.Instance.PlaySound(clip, 0.1f);
                 StartCoroutine(SpawnFruit());
             }
         }

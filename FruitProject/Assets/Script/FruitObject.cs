@@ -9,6 +9,7 @@ public class FruitObject : MonoBehaviour, IPoolable
     private Rigidbody2D rb;
     [SerializeField] private float _gameoverTime = 0f;
     [SerializeField] private bool _isLand = true;
+    [SerializeField] private GameObject _mergeParticle;
     private void Awake()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -47,6 +48,7 @@ public class FruitObject : MonoBehaviour, IPoolable
     public void Merge(FruitObject other)
     {
         Vector3 mergePos = (transform.position + other.transform.position) / 2f;
+        GameObject particle = Instantiate(_mergeParticle, mergePos, Quaternion.identity);
         PoolManager.Instance.Release(data, gameObject);
         PoolManager.Instance.Release(other.data, other.gameObject);
         GameManager.Instance.SpawnNextFruit(data, mergePos);
@@ -76,7 +78,7 @@ public class FruitObject : MonoBehaviour, IPoolable
             if ((data._id == other.data._id) && (GetInstanceID() > other.GetInstanceID()))
             {
                 AudioClip clip = Resources.Load<AudioClip>("Audio/Merge");
-                AudioManager.Instance.PlaySound(clip, 0.3f);
+                AudioManager.Instance.PlaySound(clip, 0.1f);
                 Score.Instance.ScoreUpdate(data._score);
                 Merge(other); 
             }

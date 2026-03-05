@@ -114,6 +114,7 @@ MonoBehaviour:
   _isFruit: 0
   _gameoverTime: 0
   _isLand: 1
+  _mergeParticle: {fileID: 8832036989066571676, guid: 1b75ed7e99f58e145abb8ef176a2bd58, type: 3}
 --- !u!1 &5212805721798319873
 GameObject:
   m_ObjectHideFlags: 0
