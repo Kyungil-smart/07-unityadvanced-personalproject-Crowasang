@@ -5,7 +5,9 @@ public class GuidGroup : MonoBehaviour
 {
     public float radius = 2f;
     [Range(0, 360)] public float startAngle = 90f;
-
+    public Sprite[] fruitSprites;
+    public Sprite arrowSprite;
+    
     private void Start()
     {
         FruitAlign();
@@ -13,30 +15,31 @@ public class GuidGroup : MonoBehaviour
 
     public void FruitAlign()
     {
-        int childCount = transform.childCount;
-        
-        for (int i = 0; i < childCount; i++)
-        {
-            Transform child = transform.GetChild(i);
-            RectTransform rect = child.GetComponent<RectTransform>();
 
-            if (rect != null)
+        int fruitCount = fruitSprites.Length;
+        int arrowCount = fruitCount - 1; 
+        int totalCount = fruitCount + arrowCount;
+        
+        for (int i = 0; i < totalCount; i++)
+        {
+            GameObject go = new GameObject($"Guide_{i}");
+            go.transform.SetParent(this.transform);
+            SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+            
+            float angleDeg = startAngle - (i * 360f / totalCount);
+            float angleRad = angleDeg * Mathf.Deg2Rad;
+            go.transform.localPosition = new Vector3(Mathf.Cos(angleRad) * radius, Mathf.Sin(angleRad) * radius, 0);
+            
+            if (i % 2 == 0)
             {
-                float angle = (startAngle + (i * 360f / childCount)) * Mathf.Deg2Rad;
-                
-                float x = Mathf.Cos(angle) * radius;
-                float y = Mathf.Sin(angle) * radius;
-                
-                rect.anchoredPosition = new Vector2(x, y);
-                if (i % 2 == 0)
-                {
-                    rect.localRotation = Quaternion.identity;
-                }
-                else
-                {
-                    float angleDegrees = angle * Mathf.Rad2Deg;
-                    rect.localRotation = Quaternion.Euler(0, 0, angleDegrees - 90f); 
-                }
+                sr.sprite = fruitSprites[i / 2];
+                go.transform.localRotation = Quaternion.identity;
+            }
+            else 
+            {
+                sr.sprite = arrowSprite;
+                sr.transform.localScale = 0.1f * Vector3.one;
+                go.transform.localRotation = Quaternion.Euler(0, 0, angleDeg - 90f);
             }
         }
     }
