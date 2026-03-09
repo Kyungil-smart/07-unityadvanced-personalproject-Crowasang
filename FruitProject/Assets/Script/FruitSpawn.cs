@@ -63,15 +63,6 @@ public class FruitSpawn : MonoBehaviour
             }
         }
     }
-
-    private void FollowFruit()
-    {
-        Vector3 worldPosX = Camera.main.ScreenToWorldPoint(_mouseInputPos);
-        
-        float targetX = Mathf.Clamp(worldPosX.x, -3.7f, 3.7f);
-    
-        transform.position = new Vector3(targetX, transform.position.y, 0);
-    }
     
     private IEnumerator SpawnFruit()
     {
