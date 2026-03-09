@@ -26,11 +26,6 @@ public class FruitSpawn : MonoBehaviour
         GetCurrentFruit();
     }
 
-    private void Update()
-    {
-        FollowFruit();
-    }
-
     private void OnEnable()
     {
         _playerInput.Enable();
@@ -48,6 +43,11 @@ public class FruitSpawn : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         _mouseInputPos = ctx.ReadValue<Vector2>();
+        Vector3 worldPosX = Camera.main.ScreenToWorldPoint(_mouseInputPos);
+        
+        float targetX = Mathf.Clamp(worldPosX.x, -3.7f, 3.7f);
+    
+        transform.position = new Vector3(targetX, transform.position.y, 0);
     }
 
     public void OnDrop(InputAction.CallbackContext ctx)
