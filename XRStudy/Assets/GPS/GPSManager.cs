@@ -30,32 +30,28 @@ public class GPSManager : MonoBehaviour
 
     private IEnumerator GpsRoutine()
     {
-        // 1. 디바이스에서 '위치'가 사용중이지 않다면?
+ 
         if (!Input.location.isEnabledByUser)
         {
             _coroutine = null;
             yield break;
         }
         
-        // 2. Gps Run
         Input.location.Start();
         
-        // 초기화 단계라면 될때까지 조금 기다려보자.
         int waitCount = _defaultWaitCount;
         while (Input.location.status == LocationServiceStatus.Initializing && waitCount > 0)
         {
             yield return _wait;
             waitCount--;
         }
-
-        // 기다릴만큼 기다렸다면. or GPS 상태가 '실패'일 경우
+        
         if (waitCount < 1 || Input.location.status == LocationServiceStatus.Failed)
         {
             _coroutine = null;
             yield break;
         }
         
-        // 위/경도 갱신만.
         while (true)
         {
             LocationInfo location = Input.location.lastData;

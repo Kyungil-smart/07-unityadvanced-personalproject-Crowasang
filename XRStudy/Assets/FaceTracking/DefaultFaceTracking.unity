@@ -678,7 +678,7 @@ MonoBehaviour:
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  m_FacePrefab: {fileID: 0}
+  m_FacePrefab: {fileID: 6255296969202315202, guid: 69d925bbfe895f040b2f7c9ab1b75762, type: 3}
   m_MaximumFaceCount: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

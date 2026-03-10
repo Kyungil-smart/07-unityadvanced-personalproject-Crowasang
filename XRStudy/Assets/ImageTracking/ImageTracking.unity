@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImageTracker
   _prefabs:
-  - {fileID: 930489525360799576, guid: e06d53ddcaa672043aa74232607f69a1, type: 3}
+  - {fileID: 5180567645886182323, guid: 6c3958cc3e902a6469717265a7b9bf41, type: 3}
   _arTrackedImageManager: {fileID: 1684092393}
 --- !u!4 &1146684619
 Transform:
