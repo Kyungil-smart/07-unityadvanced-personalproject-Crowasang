@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageTracker
   _prefabs:
   - {fileID: 5180567645886182323, guid: 6c3958cc3e902a6469717265a7b9bf41, type: 3}
+  - {fileID: 3770427084832419245, guid: 3dfa88251c3ee1944b403f88767e9068, type: 3}
   _arTrackedImageManager: {fileID: 1684092393}
   _speaki: {fileID: 2300258772205303884, guid: f99d3a06da5277a42b60ee31ba071845, type: 3}
 --- !u!4 &1146684619

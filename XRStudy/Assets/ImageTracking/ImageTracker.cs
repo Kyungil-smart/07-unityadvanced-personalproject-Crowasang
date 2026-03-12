@@ -101,6 +101,7 @@ public class ImageTracker : MonoBehaviour
             spawnedObject.SetActive(true);
             spawnedObject.transform.position = trackedImage.transform.position;
             spawnedObject.transform.rotation = trackedImage.transform.rotation;
+            spawnedObject.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {

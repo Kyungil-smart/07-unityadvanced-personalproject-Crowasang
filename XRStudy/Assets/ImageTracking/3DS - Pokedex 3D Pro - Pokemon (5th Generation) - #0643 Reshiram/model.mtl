@@ -1,0 +1,134 @@
+newmtl AP_circle01
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiram_circle01_ctr.png
+newmtl AP_flash01
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiram_flash01_ctr.png
+newmtl AP_shock00
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiram_shock00_ctr.png
+newmtl BodyA
+ illum 2
+ Ka 0.6666667 0.6980392 0.7098039
+ Kd 0.8 0.8 0.8
+ Ks 0.7294118 0.6980392 0.7176471
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Reshiram_BodyACl_ctr.png
+newmtl BodyB
+ illum 2
+ Ka 0.6666667 0.6980392 0.7098039
+ Kd 0.8 0.8 0.8
+ Ks 0.7294118 0.6980392 0.7176471
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Reshiram_BodyBCl_ctr.png
+newmtl Bodyfire
+ illum 2
+ Ka 0.6666667 0.6980392 0.7098039
+ Kd 0.8 0.8 0.8
+ Ks 0.7294118 0.6980392 0.7176471
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Reshiram_BodyBCl_ctr.png
+newmtl Bodyfire1
+ illum 2
+ Ka 0.6666667 0.6980392 0.7098039
+ Kd 0.8 0.8 0.8
+ Ks 0.7294118 0.6980392 0.7176471
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Reshiram_BodyBCl_ctr.png
+newmtl Eye
+ illum 2
+ Ka 0.6666667 0.6980392 0.7098039
+ Kd 0.8 0.8 0.8
+ Ks 0.7294118 0.6980392 0.7176471
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd Reshiram_EyeCl_ctr.png
+newmtl SP_bill_glow01
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiramSP_glow01.png
+newmtl SP_bill_glow03
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiramSP_glow03.png
+newmtl SP_fire00
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiramSP_fire00.png
+newmtl SP_glow00
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiramSP_glow00.png
+newmtl SP_glow01
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiramSP_glow01.png
+newmtl SP_ura_glow01
+ illum 2
+ Ka 0 0 0
+ Kd 0.8 0.8 0.8
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
+ map_Kd EfReshiramSP_glow01.png
+newmtl shadow_w
+ illum 2
+ Ka 0 0 0
+ Kd 0 0 0
+ Ks 0 0 0
+ Ns 20
+ d 1
+ Tr 0
